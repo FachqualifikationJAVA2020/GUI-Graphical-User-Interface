@@ -38,12 +38,23 @@ public class ZweiteGUI implements ActionListener {
         frame.add(label, BorderLayout.WEST);
         frame.add(button, BorderLayout.SOUTH);
 
+        /*
+         *  ActionListener dem Button hinzufügen
+         *
+         *  Mit der addActionlistener()-Methode wird eine Instanz
+         *  einer Klasse, die ActionListener implementiert an den
+         *  Button gehängt
+         *  Wenn eine Aktion am Button ausgeführt wird,
+         *  reagiert die Klasse mit der actionPerformed()-Methode
+         *
+         */
+        button.addActionListener(this);
+
         //  Frame Größe an Inhalt anpassen
         frame.pack();
 
         //  Frame sichtbar machen
         frame.setVisible(true);
-
     }
 
 
@@ -52,10 +63,27 @@ public class ZweiteGUI implements ActionListener {
         new ZweiteGUI();
     }
 
-    //  PFLICHT METHODE VON ActionListener-Interface
+    /*
+     *  ActionListener Methode für Button-Events z.B. beim Klick Text ändern
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        //  TODO: Code hier!
+        /*
+         *  Auslesen des Text aus dem JTextField
+         *
+         *  .getText() kann nur Strings auslesen
+         */
+        String s = eingabe.getText();
+
+        //  Aus String ein int machen
+        int i = Integer.parseInt(s);
+        i = i * 2;
+
+        //  Leeren vom JTextField
+        eingabe.setText("");
+
+        //  Text ins JLabel schreiben
+        label.setText(String.valueOf(i));
 
     }
 }
